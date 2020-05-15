@@ -17,7 +17,7 @@ Run "Train_SeER.py". You can tune the hyperparameters by updating the file. The 
 * Generate explained recommendations:
 Run "Recommendation_Explanation_SeER.py". You can update the code to choose the trained model weights to use. We provide the weights of the best performing model with GRU and 150 latent factors. The code outputs "topK" recommendations for the chosen user "user_number". Each recommendation is accompanied with a text explanation that includes the start and end times (in μs) of the most important portion of the recommended song to the user.
 
-\bold{Note: }You first need to unzip the following files for the code to run properly:
+<b>Note: </b>You first need to unzip the following files for the code to run properly:
 * Data/midi_array.zip
 * Data/Time_array.zip
 * Trained models/model_GRU_latent_150_weights.zip
