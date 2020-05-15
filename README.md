@@ -5,7 +5,7 @@ Authors: Khalil Damak and Olfa Nasraoui
 
 Link to paper: https://arxiv.org/abs/1907.01640
 
-<b>Please cite the paper if you use our code. Thanks!</b>
+<b>Please cite our paper if you use our code. Thanks!</b>
 
 ## Environment settings
 We use Keras 2.2.4.
