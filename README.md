@@ -24,7 +24,7 @@ Run "Recommendation_Explanation_SeER.py". You can update the code to choose the 
 
 ## Dataset
 We provide the final preprocessed dataset ready to use as input to the model
-* midi_array.txt: Flattened midi array. Shape = (6442 songs, 160000 = 5,000 normalized time steps * 16 channels * 2 (note, velocity))
+* midi_array.txt: Flattened midi array. Shape = (6442 songs, 160,000 = 5,000 normalized time steps * 16 channels * 2 (note, velocity))
 * triplets.txt: (user, song, rating) triplets. Includes 941,044 ratings of 32,180 users to 6,442 songs.
 * song_information.csv: Includes song metadata (song_id, artist_name, title, release, year, duration)
 * song_to_number_matching.csv: Matches the song numbers in our datasets to their song_ids.
