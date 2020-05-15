@@ -2,19 +2,8 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import mean_absolute_error
 import progressbar
-from ml_metrics import mapk
 
 # Method to prepare the data for evaluation
-
-#def prepare_data_for_evaluation(test_set, test_true_labels, model, interaction_threshold, batch_size):
-#    predictions = model.predict([[x[0] for x in test_set], [x[1] for x in test_set]], batch_size=batch_size, verbose=1)
-#    predictions = np.array([x[0] for x in predictions])
-#    pred_df = pd.DataFrame({'user': [x[0] for x in test_set], 'song': [x[1] for x in test_set], 'rating': list(predictions), 'true': test_true_labels})
-#    pred_df['relevant'] = np.where(pred_df['true'] >= interaction_threshold, 1, 0)
-#    pred_df['rank'] = pred_df.groupby('user')['rating'].rank(method='first', ascending=False)
-#    pred_df['rank_true'] = pred_df.groupby('user')['true'].rank(method='first', ascending=False)
-#    pred_df.sort_values(['user', 'rank'], inplace=True)
-#    return pred_df, predictions
 
 def prepare_data_for_evaluation(test_set, test_true_labels, model, interaction_threshold, batch_size):
     predictions = model.predict([[x[0] for x in test_set], [x[1] for x in test_set]], batch_size=batch_size, verbose=1)
@@ -36,13 +25,6 @@ def mean_absolute_error_evaluation(predictions, test_true_labels):
     return mean_absolute_error(np.array(test_true_labels), predictions)
 
 # Method to calculate MAP@K
-
-#def map_at_k_evaluation(pred_df, topK):
-#    users = list(dict.fromkeys(list(pred_df['user'])))
-#    #actual = [list(pred_df[(pred_df['user'] == user) & (pred_df['relevant'] == 1)]['song']) for user in users]
-#    actual = [list(pred_df[(pred_df['user'] == user) & (pred_df['rank_true'] <= topK)]['song']) for user in users]
-#    predicted = [list(pred_df[(pred_df['user'] == user) & (pred_df['rank'] <= topK)]['song']) for user in users]
-#    return mapk(actual, predicted, k=topK)
 
 def map_at_k_evaluation(pred_df, topk):
     AP = 0.0
