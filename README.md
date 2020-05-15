@@ -1,7 +1,7 @@
 # SeER_Keras
 Keras implementation of the paper "SeER: An Explainable Deep Learning MIDI-based Hybrid Song Recommender System"
 
-Authors: Khalil Damak and OLfa Nasraoui
+Authors: Khalil Damak and Olfa Nasraoui
 
 Link to paper: https://arxiv.org/abs/1907.01640
 
