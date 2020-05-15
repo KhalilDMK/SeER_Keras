@@ -1,6 +1,6 @@
 import numpy as np
 from time import time
-from Code.Data import Dataset
+from Code.Data_train import Dataset_train
 from Code.SeER import get_model
 from Code.Evaluate import prepare_data_for_evaluation, root_mean_squared_error_evaluation, mean_absolute_error_evaluation, map_at_k_evaluation
 from keras.optimizers import Adam, sgd
@@ -24,7 +24,7 @@ interaction_threshold = 3 #Choose between 1 and 5
 if __name__ == '__main__':
 
     # Read data
-    dataset = Dataset(triplets_filename, midi_array_filename, sequence_length)
+    dataset = Dataset_train(triplets_filename, midi_array_filename, sequence_length)
     train_set, test_set, midi_array, num_users, num_songs, test_true_labels = dataset.read_files
 
     # Reduce number of channels to num_channels
