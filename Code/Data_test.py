@@ -16,9 +16,6 @@ class Dataset_test(object):
         self.sequence_length = sequence_length
         self.get_explainability_model = get_explainability_model
         self.get_model = get_model
-        #global model_type_
-        #model_type_ = model_type
-
 
     # Method to read the files and create the models
 
@@ -80,6 +77,5 @@ def load_trained_model(model_name, num_users, num_songs, num_latent_features, mi
     print('Reading trained model...')
     model = get_model(num_users, num_songs, num_latent_features, midi_array[:, list(range(sequence_length * 32))], num_channels, sequence_length)
     model.load_weights(model_name + '_weights.h5')
-    #model = load_model(model_name + '.h5')
     return model
 
