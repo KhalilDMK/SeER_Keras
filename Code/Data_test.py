@@ -1,12 +1,10 @@
 import numpy as np
 import pandas as pd
 import json
-from keras.models import load_model
-from Code.SeER import get_explainability_model, get_model
 
 class Dataset_test(object):
 
-    def __init__(self, midi_array_filename, time_array_filename, song_to_number_matching_filename, song_information_filename, triplets_filename, model_name, num_latent_features, num_channels, sequence_length):
+    def __init__(self, midi_array_filename, time_array_filename, song_to_number_matching_filename, song_information_filename, triplets_filename, model_name, num_latent_features, num_channels, sequence_length, get_explainability_model, get_model):
         self.midi_array_filename = midi_array_filename
         self.time_array_filename = time_array_filename
         self.song_to_number_matching_filename = song_to_number_matching_filename
@@ -16,6 +14,11 @@ class Dataset_test(object):
         self.num_latent_features = num_latent_features
         self.num_channels = num_channels
         self.sequence_length = sequence_length
+        self.get_explainability_model = get_explainability_model
+        self.get_model = get_model
+        #global model_type_
+        #model_type_ = model_type
+
 
     # Method to read the files and create the models
 
@@ -26,8 +29,8 @@ class Dataset_test(object):
         song_to_number_matching, num_songs = read_list_of_songs(self.song_to_number_matching_filename)
         song_information = read_song_information(self.song_information_filename)
         num_users, num_songs = get_number_of_users_and_songs(self.triplets_filename)
-        model = load_trained_model(self.model_name, num_users, num_songs, self.num_latent_features, midi_array, self.num_channels, self.sequence_length)
-        explainability_model = get_explainability_model(num_users, self.num_latent_features, self.num_channels, self.model_name)
+        model = load_trained_model(self.model_name, num_users, num_songs, self.num_latent_features, midi_array, self.num_channels, self.sequence_length, self.get_model)
+        explainability_model = self.get_explainability_model(num_users, self.num_latent_features, self.num_channels, self.model_name)
         print('Done.')
         return midi_array, time_array, song_to_number_matching, num_songs, song_information, num_users, num_songs, model, explainability_model
 
@@ -73,7 +76,7 @@ def get_number_of_users_and_songs(triplets_filename):
 
 #Method to load the trained model
 
-def load_trained_model(model_name, num_users, num_songs, num_latent_features, midi_array, num_channels, sequence_length):
+def load_trained_model(model_name, num_users, num_songs, num_latent_features, midi_array, num_channels, sequence_length, get_model):
     print('Reading trained model...')
     model = get_model(num_users, num_songs, num_latent_features, midi_array[:, list(range(sequence_length * 32))], num_channels, sequence_length)
     model.load_weights(model_name + '_weights.h5')

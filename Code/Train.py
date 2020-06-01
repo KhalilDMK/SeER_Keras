@@ -17,8 +17,9 @@ sequence_length = 500  # Value should be less than 2600. Best value is 2600 for 
 num_channels = 16  # Choose between 1 and 16
 interaction_threshold = 3  # Choose between 1 and 5
 
-model_name = 'W_SeER'   # Choose between 'SeER' and 'W_SeER'
-exec('from Code.' + model_name + ' import get_model')
+model_type = 'W_SeER'   # Choose between 'SeER' and 'W_SeER'
+global get_model
+exec('from Code.' + model_type + ' import get_model')
 
 # Main
 
