@@ -8,9 +8,9 @@ We use Keras 2.2.4.
 
 ## Description
 This repository includes the code necessary to:
-* Train SeER and W-SeER and tune their hyperparameters:
+* <b>Train SeER and W-SeER and tune their hyperparameters:</b>
 Run "Train.py". The code is set up to train W-SeER with its optimal hyperparameters. You can tune the hyperparameters by updating the file. Also, you can change the "model_type" variable's value to "SeER" to train SeER. The model will train and output the RMSE, MAE, MAP@K and NDCG@K results on the test set for every epoch.
-* Generate explained recommendations:
+* <b>Generate explained recommendations:</b>
 Run "Recommendation_Explanation.py". You can update the code to choose the trained model weights to use. We provide the weights of the best performing SeER and W-SeER models that are reported in the paper. The code outputs "topK" recommendations for the chosen user "user_number". Each recommendation is accompanied with a text explanation that includes the start and end times (in μs) of the most important portion of the recommended song to the user. The code is set up to generate explained recommendations using the model from the W-SeER weight file. You can change the code to use the SeER weight file.
 
 <b>Note: </b>You first need to unzip the following files for the code to run properly:
