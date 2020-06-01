@@ -2,18 +2,23 @@ from Code.Data_test import Dataset_test
 from Code.Recommendation_utils import generate_recommendations_with_explanations_for_user
 
 # Define hyperparameters
-model_name = '../Trained models/model_GRU_latent_150'
+model_name = '../Trained models/SeER_GRU_latent_150_seq2600'  # Also try '../Trained models/W-SeER_LSTM_latent_150_seq500' for pretrained W-SeER
+#model_name = '../Trained models/W-SeER_LSTM_latent_150_seq500'
 midi_array_filename = '../Data/midi_array'
 song_to_number_matching_filename = '../Data/song_to_number_matching'
 song_information_filename = '../Data/song_information'
 time_array_filename = '../Data/time_array'
 triplets_filename = '../Data/triplets'
-sequence_length = 2600
+sequence_length = 2600  # Change to 500 if using pretrained W-SeER
 batch_size = 500
 topK = 5  # Number of recommendations
 len_sections = 10  # in seconds
 num_channels = 16
 num_latent_features = 150
+
+model_type = 'SeER'   # Choose between 'SeER' and 'W_SeER'
+global get_explainability_model, get_model
+exec('from Code.' + model_type + ' import get_explainability_model, get_model')
 
 # Define test user
 user_number = 4
@@ -23,7 +28,7 @@ user_number = 4
 if __name__ == '__main__':
 
     # Read files and create models
-    dataset = Dataset_test(midi_array_filename, time_array_filename, song_to_number_matching_filename, song_information_filename, triplets_filename, model_name, num_latent_features, num_channels, sequence_length)
+    dataset = Dataset_test(midi_array_filename, time_array_filename, song_to_number_matching_filename, song_information_filename, triplets_filename, model_name, num_latent_features, num_channels, sequence_length, get_explainability_model, get_model)
     midi_array, time_array, song_to_number_matching, num_songs, song_information, num_users, num_songs, model, explainability_model = dataset.read_files_and_create_models
 
     #Generate recommendations with explanations for user_number
