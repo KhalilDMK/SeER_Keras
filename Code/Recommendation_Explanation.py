@@ -2,21 +2,20 @@ from Code.Data_test import Dataset_test
 from Code.Recommendation_utils import generate_recommendations_with_explanations_for_user
 
 # Define hyperparameters
-model_name = '../Trained models/SeER_GRU_latent_150_seq2600'  # Also try '../Trained models/W-SeER_LSTM_latent_150_seq500' for pretrained W-SeER
-#model_name = '../Trained models/W-SeER_LSTM_latent_150_seq500'
+model_name = '../Trained models/SeER_LSTM_latent_150_seq500'
 midi_array_filename = '../Data/midi_array'
 song_to_number_matching_filename = '../Data/song_to_number_matching'
 song_information_filename = '../Data/song_information'
 time_array_filename = '../Data/time_array'
 triplets_filename = '../Data/triplets'
-sequence_length = 2600  # Change to 500 if using pretrained W-SeER
+sequence_length = 500
 batch_size = 500
 topK = 5  # Number of recommendations
 len_sections = 10  # in seconds
 num_channels = 16
 num_latent_features = 150
 
-model_type = 'SeER'   # Choose between 'SeER' and 'W_SeER'
+model_type = 'SeER'
 global get_explainability_model, get_model
 exec('from Code.' + model_type + ' import get_explainability_model, get_model')
 
