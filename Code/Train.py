@@ -11,13 +11,13 @@ midi_array_filename = '../Data/midi_array'
 num_latent_features = 150
 learning_rate = 0.001
 optimizer = 'Adam'
-batch_size = 500
+batch_size = 1000
 num_epochs = 20
-sequence_length = 500  # Value should be less than 2600. Best value is 2600 for SeER and 500 for W-SeER (try reducing for fast convergence)
+sequence_length = 500  # Value should be less than 2600. Best value is 500 (try reducing for fast convergence)
 num_channels = 16  # Choose between 1 and 16
 interaction_threshold = 3  # Choose between 1 and 5
 
-model_type = 'W_SeER'   # Choose between 'SeER' and 'W_SeER'
+model_type = 'SeER'
 global get_model
 exec('from Code.' + model_type + ' import get_model')
 
