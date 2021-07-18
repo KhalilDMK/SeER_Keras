@@ -1,4 +1,4 @@
-# SeER_Keras
+# Sequence-based Explainable Hybrid Song Recommendation
 Keras implementation of the paper "Sequence-based Explainable Hybrid Song Recommendation".
 Accepted at Frontiers in Big Data, Data Mining and Management.
 https://www.frontiersin.org/articles/10.3389/fdata.2021.693494/abstract
